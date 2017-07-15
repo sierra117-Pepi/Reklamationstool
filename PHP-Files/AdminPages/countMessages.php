@@ -1,11 +1,10 @@
 <?php
-
     $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
     if(mysqli_connect_errno()){
         header("Location:../ErrorPages/dbConnectionError.php");
         exit();
     } else {
-        $query = "SELECT COUNT(*)AS unreadMessages FROM messages WHERE isRead = false;";
+        $query = "SELECT COUNT(*)AS unreadMessages FROM messages m WHERE isRead = false;";
         $stmt = mysqli_prepare($con,$query);
         if(!mysqli_stmt_execute($stmt)){
             die('Error: ' . mysqli_error($con));

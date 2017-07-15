@@ -62,43 +62,9 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-messages">
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <strong>TestUser</strong> <span class="pull-right text-muted">
-										<em>Gestern</em>
-									</span>
-                                </div>
-                                <div>Hallo ich hätte ein Problem?</div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <strong>TestUser</strong> <span class="pull-right text-muted">
-										<em>Gestern</em>
-									</span>
-                                </div>
-                                <div>Hallo was haben Sie für ein Problem</div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <strong>TestUser</strong> <span class="pull-right text-muted">
-										<em>Gestern</em>
-									</span>
-                                </div>
-                                <div>Bie meiner Lieferung wurde folgendes vergessen ......</div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a class="text-center" href="tasksAdmin.html"> <strong>Alle Nachrichten anzeigen</strong> <i class="fa fa-angle-right"></i>
-                            </a>
-                        </li>
+
+                        <?php include "fillMessagesDropdown.php" ?>
+
                     </ul>
                     <!-- /.dropdown-messages -->
                 </li>
@@ -107,74 +73,9 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-tasks">
-                        <li>
-                            <a href="editTask.html">
-                                <div>
-                                    <p>
-                                        <strong>590294</strong> <span class="pull-right text-muted">40% Abgeschlossen
-											</span>
-                                    </p>
-                                    <div class="progress progress-striped active">
-                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                            <span class="sr-only">40% Abgeschlossen (success)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <p>
-                                        <strong>590295</strong> <span class="pull-right text-muted">20%
-											Abgeschlossen</span>
-                                    </p>
-                                    <div class="progress progress-striped active">
-                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-                                            <span class="sr-only">20% Abgeschlossen</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <p>
-                                        <strong>590296</strong> <span class="pull-right text-muted">60%
-											Abgeschlossen</span>
-                                    </p>
-                                    <div class="progress progress-striped active">
-                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                            <span class="sr-only">60% Abgeschlossen (warning)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <p>
-                                        <strong>590297</strong> <span class="pull-right text-muted">80%
-											Abgeschlossen</span>
-                                    </p>
-                                    <div class="progress progress-striped active">
-                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                                            <span class="sr-only">80% Abgeschlossen (danger)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a class="text-center" href="tasksAdmin.php"> <strong>Alle Aufträge ansehen</strong> <i class="fa fa-angle-right"></i>
-                            </a>
-                        </li>
+
+                        <?php include "fillTasksDropdown.php" ?>
+
                     </ul>
                     <!-- /.dropdown-tasks -->
                 </li>
