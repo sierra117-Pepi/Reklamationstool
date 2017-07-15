@@ -77,6 +77,7 @@
                 header("Location:../ErrorPages/dbConnectionError.php");
                 exit();
             } else {
+                setUnreadMessageToRead($complaint);
                 $messages = array(array());
                 $row = 0;
                 mysqli_stmt_bind_result($stmt, $sender, $receiver, $complaint, $content, $isRead, $dateSend);
@@ -91,6 +92,24 @@
                 }
                 $json_messages = json_encode($messages);
                 return $json_messages;
+            }
+        }
+    }
+
+    function setUnreadMessageToRead($complaint){
+        $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
+        
+        if(mysqli_connect_errno()){
+            header("Location:../ErrorPages/dbConnectionError.php");
+            exit();
+        } else {
+            $queryUpdate = "UPDATE messages SET isRead='1' WHERE receiver=? && complaint=?;";
+            $stmt = mysqli_prepare($con,$queryUpdate);
+            mysqli_stmt_bind_param($stmt, "sd", $_SESSION['userName'], $complaint);
+            if(!mysqli_stmt_execute($stmt)){
+                die('Error: ' . mysqli_error($con));
+                header("Location:../ErrorPages/dbConnectionError.php");
+                exit();
             }
         }
     }

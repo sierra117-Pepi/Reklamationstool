@@ -36,7 +36,6 @@
 
 <body>
     <div id="wrapper">
-
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -75,7 +74,7 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="../Login/login_html.php"><i class="fa fa-sign-out fa-fw"></i>
+                        <li><a href="../LogOut/logout.php"><i class="fa fa-sign-out fa-fw"></i>
 								Logout</a></li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -87,17 +86,6 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-									<button class="btn btn-default" type="button">
-										<i class="fa fa-search"></i>
-									</button>
-								</span>
-                            </div>
-                            <!-- /input-group -->
-                        </li>
                         <li><a href="dashboardAdmin.php"><i class="fa fa-dashboard fa-fw"></i>Aufträge Verwaltung</a></li>
                         <li><a href="tasksAdmin.php"><i class="fa fa-tasks fa-fw"></i>Aufträge mit Mitarbeiterzuweisung</a></li>
                     </ul>
@@ -106,105 +94,105 @@
             </div>
             <!-- /.navbar-static-side -->
         </nav>
-
-        <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Aufträge</h1>
-                </div>
-                <!-- /.col-lg-12 -->
+    </div>
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Aufträge</h1>
             </div>
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-6 col-md-6">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-comments fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-
-                                    <?php include "countMessages.php"; ?>
-
-                                    <div>Neue Nachrichten!</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="tasksAdmin.php">
-                            <div class="panel-footer">
-                                <span class="pull-left">Details anzeigen</span> <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-tasks fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-
-                                    <?php include "countTasks.php"; ?>
-
-                                    <div>Offene Aufträge!</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#divTable">
-                            <div class="panel-footer">
-                                <span class="pull-left">Details anzeigen</span> <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Tasks</div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div id="divTable" class="table-responsive">
-
-                                <?php include "tableAdminDashboard.php" ?>
-
-                            </div>
-                            <!-- /.table-responsive -->
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                </div>
-                <!-- /.col-lg-6 -->
-            </div>
-            <!-- /.row -->
+            <!-- /.col-lg-12 -->
         </div>
-        <!-- /#page-wrapper -->
-        <!-- /#wrapper -->
-        <!-- jQuery -->
-        <script src="../../JavaScript/IndexFiles/jquery.min.js"></script>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-comments fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
 
-        <!-- Bootstrap Core JavaScript -->
-        <script src="../../JavaScript/IndexFiles/bootstrap.min.js"></script>
+                                <?php include "countMessages.php"; ?>
 
-        <!-- Metis Menu Plugin JavaScript -->
-        <script src="../../JavaScript/IndexFiles/metisMenu.min.js"></script>
+                                <div>Neue Nachrichten!</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="tasksAdmin.php">
+                        <div class="panel-footer">
+                            <span class="pull-left">Details anzeigen</span> <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="panel panel-green">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-tasks fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
 
-        <!-- Custom Theme JavaScript -->
-        <script src="../../JavaScript/IndexFiles/sb-admin-2.js"></script>
-        <script>
-            // popover demo
-            $("[data-toggle=popover]")
-                .popover()
+                                <?php include "countTasks.php"; ?>
 
-        </script>
+                                <div>Offene Aufträge!</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#divTable">
+                        <div class="panel-footer">
+                            <span class="pull-left">Details anzeigen</span> <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Tasks</div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div id="divTable" class="table-responsive">
+
+                            <?php include "tableAdminDashboard.php" ?>
+
+                        </div>
+                        <!-- /.table-responsive -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-6 -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /#page-wrapper -->
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    <script src="../../JavaScript/IndexFiles/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../JavaScript/IndexFiles/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../../JavaScript/IndexFiles/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../../JavaScript/IndexFiles/sb-admin-2.js"></script>
+    <script>
+        // popover demo
+        $("[data-toggle=popover]")
+            .popover()
+
+    </script>
 </body>
 
 </html>
