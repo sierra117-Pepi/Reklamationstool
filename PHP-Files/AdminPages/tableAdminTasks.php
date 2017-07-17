@@ -143,7 +143,8 @@
 
 
         function openInfoWindow(nr) {
-            alert(nr);
+            localStorage.setItem("complaintNr", nr);
+            window.location.href = "complaintDetails.php";
         }
 
         function addMessageToChat() {

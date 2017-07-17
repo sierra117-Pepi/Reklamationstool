@@ -37,6 +37,15 @@ CREATE TABLE users (
 );
 
 --
+-- Tabelle Products
+--
+CREATE TABLE products (
+  nr INT,
+  name VARCHAR(100),
+  details VARCHAR(100)
+);
+
+--
 -- Tabelle Complaints
 --
 CREATE TABLE complaints (
@@ -65,6 +74,7 @@ CREATE TABLE messages (
   dateSend DATETIME NOT NULL
 );
 
+
 --
 -- Indizes der exportierten Tabellen
 --
@@ -88,6 +98,12 @@ ALTER TABLE `complaints`
 --
 ALTER TABLE `messages`
   ADD PRIMARY KEY (`sender`, `receiver`, `complaint`, `dateSend`);
+
+--
+-- Indizes für die Tabelle `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`nr`);
 
 --
 -- AUTO_INCREMENT für exportierte Tabellen
@@ -125,6 +141,9 @@ ALTER TABLE `complaints`
 ALTER TABLE `complaints`
   ADD CONSTRAINT `employee` FOREIGN KEY (`employee`) REFERENCES `users` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
 
+ALTER TABLE `complaints`
+  ADD CONSTRAINT `product` FOREIGN KEY (`nr`) REFERENCES `products` (`nr`) ON DELETE CASCADE ON UPDATE CASCADE;
+
 --
 -- Daten für Tabellen
 --
@@ -139,6 +158,13 @@ INSERT INTO `users` (`name`, `email`, `password`, `isWorker`, `isAdmin`) VALUES
 ('Victoria', 'vici@gmail.com', 'vici', false, false),
 ('Johannes', 'johannes@gmail.com', 'johannes', true, false),
 ('', '', '', false, false);
+
+--
+-- Daten für Tabelle `products`
+--
+INSERT INTO `products` (`nr`, `name`, `details`) VALUES
+('123', 'Kabelrinnen Sendzimirverzink', '100cm breit'),
+('234', 'Kabelhälter', '1000cm breit');
 
 --
 -- Daten für Tabelle `complaints`
