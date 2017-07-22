@@ -10,8 +10,17 @@
 
     <title>Admin-Sicht</title>
 
+    <!-- Datetimepicker -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/bower_components/moment/min/moment.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+
     <!-- Bootstrap Core CSS -->
     <link href="../../CSS/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Datetimepicker CSS -->
+    <link rel="stylesheet" href="../../JavaScript/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
 
     <!-- MetisMenu CSS -->
     <link href="../../CSS/Login/metisMenu.min.css" rel="stylesheet">
@@ -35,7 +44,7 @@
     <script src="../../JavaScript/CustomFiles/complaintDetails.js" type="text/javascript"></script>
 </head>
 
-<body>
+<body id="body">
     <div id="wrapper">
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -105,50 +114,122 @@
             <!-- /.col-lg-12 -->
         </div>
         <!-- /.row -->
-        <div class="row">
-            <div class="col-lg-3">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Produkt Information
-                    </div>
-                    <div class="panel-body fixed-panel">
-                        <p id="name">
+        <form role="form">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Produkt Information
+                        </div>
+                        <div class="panel-body fixed-panel">
+                            <p id="name">
 
-                        </p>
+                            </p>
+                        </div>
+                        <div class="panel-footer">
+                        </div>
                     </div>
-                    <div class="panel-footer">
+                </div>
+                <div class="col-lg-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Mitarbeiter Details
+                        </div>
+                        <div class="panel-body fixed-panel">
+                            <p id="employee">
+
+                            </p>
+                        </div>
+                        <div class="panel-footer">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Kunde Details
+                        </div>
+                        <div class="panel-body fixed-panel">
+                            <p id="client">
+
+                            </p>
+                        </div>
+                        <div class="panel-footer">
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3">
-                <form role="form">
+            <div class="row">
+                <div class="col-lg-4">
                     <fieldset>
                         <div class="form-group">
                             <label for="disabledSelect">Produktnummer</label>
-                            <input class="form-control" id="complaintNr" type="text" placeholder="Disabled input" disabled>
-                            <div class="form-group">
-                                <label>Selects</label>
-                                <select id="status" class="form-control">
-                                    <option>Offen</option>
-                                    <option>In Bearbeitung Offen</option>
-                                    <option>Abgeschlossen - Berechtigt</option>
-                                    <option>Abgeschlossen - Unberechtigt</option>
-                                </select>
+                            <input class="form-control" id="complaintNr" type="text" placeholder="" disabled>
+                            <label for="disabledSelect">Beschreibung</label>
+                            <input class="form-control" id="details" type="text" placeholder="" disabled>
+                            <label for="disabledSelect">Typ</label>
+                            <input class="form-control" id="type" type="text" placeholder="" disabled>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col-lg-4">
+                    <fieldset>
+                        <div class="form-group">
+                            <label>Status</label>
+                            <select id="status" class="form-control">
+                                <option>Offen</option>
+                                <option>In Bearbeitung Offen</option>
+                                <option>Abgeschlossen - Berechtigt</option>
+                                <option>Abgeschlossen - Unberechtigt</option>
+                            </select>
+                            <label for="disabledSelect">Auftragsdatum</label>
+                            <div class='input-group date' id='issuedCalendar'>
+                                <input type='text' id="issued" class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="fa fa-calendar"></span>
+                                </span>
+                            </div>
+                            <label for="disabledSelect">Mitarbeiterzuwesiung</label>
+                            <div class='input-group date' id='takeCalendar'>
+                                <input type='text' id="taken" class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="fa fa-calendar"></span>
+                                </span>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-primary">Update</button>
                     </fieldset>
-                </form>
+                </div>
+                <div class="col-lg-4">
+                    <fieldset>
+                        <div class="form-group">
+                            <label>Grund l. Schachinger</label>
+                            <select id="reasonSchachinger" class="form-control">
+				                <option>Keine Auswahl</option>
+                                <option>Reklamation unberechtigt</option>
+                                <option>Reklamation berechtigt</option>
+                            </select>
+                            <label>Gegenma&szlig;nahme Schachinger</label>
+                            <select id="measureSchachinger" class="form-control">
+                                <option>Keine Auswahl</option>
+                                <option >Keine Aktion</option>
+                                <option>Nachlieferung</option>
+                                <option>Abholung</option>
+                                <option>Anderes</option>
+                            </select>
+                            <label>Gegenma&szlig;nahme zur Vermeidung</label>
+                            <input class="form-control" id="measureAvoid" type="text" placeholder="" />
+                        </div>
+                    </fieldset>
+                </div>
             </div>
-        </div>
+            <div class="row">
+                <div class="col-lg-2">
+                    <button type="button" id="update-btn" class="btn btn-primary" onclick="updateInformationForComplaint()">Aktualisieren</button>
+                </div>
+            </div>
+        </form>
     </div>
     <!-- /#page-wrapper -->
-
-    <!-- jQuery -->
-    <script src="../../JavaScript/IndexFiles/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../../JavaScript/IndexFiles/bootstrap.min.js"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
     <script src="../../JavaScript/IndexFiles/metisMenu.min.js"></script>

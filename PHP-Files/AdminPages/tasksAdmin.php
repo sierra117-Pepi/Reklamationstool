@@ -12,7 +12,8 @@
     <!-- Custom imports-->
     <!-- jQuery -->
     <script src="../../SB-Admin2/vendor/jquery/jquery.min.js"></script>
-    <!-- Bootstrap Core JavaScript -->
+    <!-- JSPDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
 
     <!-- Bootstrap Core CSS -->
     <link href="../../SB-Admin2/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -33,6 +34,8 @@
     <script src="../../SB-Admin2/vendor/jquery/jquery.min.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="../../SB-Admin2/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- JSTZ -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jstimezonedetect/1.0.4/jstz.min.js'></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -40,6 +43,8 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <script type="text/javascript" src="../../JavaScript/CustomFiles/tableAdminTasks.js"></script>
 </head>
 
 <body id="body">
@@ -121,9 +126,7 @@
                     </div>
                     <!-- /.panel-heading -->
                     <div class="panel-body">
-
                         <?php include "tableAdminTasks.php"; ?>
-
                         <!-- /.table-responsive -->
                     </div>
                     <!-- /.panel-body -->
@@ -153,7 +156,7 @@
 							</button>
                                 <ul class="dropdown-menu slidedown">
                                     <li>
-                                        <a href="#" id="pdf"> <i class="fa fa-refresh fa-fw"></i>PDF erstellen
+                                        <a href="#" id="pdf" onclick="savePDF()"> <i class="fa fa-refresh fa-fw"></i>PDF erstellen
                                         </a>
                                     </li>
                                 </ul>

@@ -4,7 +4,9 @@
         switch($_POST['function']){
             case 1:
                 if(isset($_POST['employee']) && isset($_POST['complaintNr'])){
-                    addWrokerToTask($_POST['employee'], $_POST['complaintNr']);
+                    if(taskHasNoWorker($_POST['complaintNr'])){
+                        addWrokerToTask($_POST['employee'], $_POST['complaintNr']);
+                    }
                 }
                 break;
             case 2:
@@ -18,10 +20,58 @@
                 }
                 break;
             case 4:
-                if(isset($_POST['complaintNr']) && isset($_POST['content'])){
-                    echo(insertMessage($_POST['complaintNr'],$_POST['content']));
+                if(isset($_POST['complaintNr']) && isset($_POST['content']) && isset($_POST['timeZone'])){
+                    echo(insertMessage($_POST['complaintNr'],$_POST['content'], $_POST['timeZone']));
                 }
                 break;
+            case 5:
+                if(isset($_POST['complaintNr']) && isset($_POST['status']) && isset($_POST['issued']) && isset($_POST['taken']) && isset($_POST['reasonSchachinger']) && isset($_POST['measureSchachinger']) && isset($_POST['measureAvoid'])){
+                    echo(updateComplaint($_POST['complaintNr'], $_POST['status'], $_POST['issued'], $_POST['taken'], $_POST['reasonSchachinger'], $_POST['measureSchachinger'], $_POST['measureAvoid']));
+                }
+        }
+    }
+
+    function updateComplaint($complaintNr, $status, $issued, $taken, $reasonSchachinger, $measureSchachinger, $measureAvoid){
+        $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
+        
+        if(mysqli_connect_errno()){
+            header("Location:../ErrorPages/dbConnectionError.php");
+            exit();
+        } else {
+            $queryUpdate = "UPDATE complaints SET nr=?, status=?, reasonSchachinger=?, measureSchachinger=?, measureAvoid=?, issued=?, take=? WHERE nr=?;";
+            $stmt = mysqli_prepare($con,$queryUpdate);
+            mysqli_stmt_bind_param($stmt, "dsssssss", $complaintNr, $status, $reasonSchachinger, $measureSchachinger, $measureAvoid, $issued, $taken, $complaintNr);
+            if(!mysqli_stmt_execute($stmt)){
+                die('Error: ' . mysqli_error($con));
+                header("Location:../ErrorPages/dbConnectionError.php");
+                exit();
+            }
+        }
+    }
+
+    function taskHasNoWorker($complaint){
+        $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
+        
+        if(mysqli_connect_errno()){
+           header("Location:../ErrorPages/dbConnectionError.php");
+            exit();
+        } else {
+            $query = "SELECT employee FROM complaints WHERE nr=?;";
+            $stmt = mysqli_prepare($con,$query);
+            mysqli_stmt_bind_param($stmt,"d",$complaint);
+            if(!mysqli_stmt_execute($stmt)){
+                die('Error: ' . mysqli_error($con));
+                header("Location:../ErrorPages/dbConnectionError.php");
+                exit();
+            } else {
+                mysqli_stmt_bind_result($stmt, $emp);
+                while(mysqli_stmt_fetch($stmt)){
+                    if($emp == ''){
+                        return true;
+                    }
+                }
+                return false;
+            }
         }
     }
     
@@ -138,7 +188,7 @@
         }
     }
 
-    function insertMessage($complaintNr, $content){
+    function insertMessage($complaintNr, $content, $timeZone){
         $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
         
         if(mysqli_connect_errno()){
@@ -157,16 +207,16 @@
                 $loggedIn = $_SESSION['userName'];
                 while(mysqli_stmt_fetch($stmt)){
                     if($customer == $loggedIn){
-                        insertMessageIntoTableMessages($customer, $employee, $content, $complaintNr);
+                        insertMessageIntoTableMessages($customer, $employee, $content, $complaintNr, $timeZone);
                     } else if($employee == $loggedIn){
-                        insertMessageIntoTableMessages($employee, $customer, $content, $complaintNr);
+                        insertMessageIntoTableMessages($employee, $customer, $content, $complaintNr, $timeZone);
                     } 
                 }
             }
         }
     }
                          
-    function insertMessageIntoTableMessages($sender, $receiver, $content, $complaintNr){
+    function insertMessageIntoTableMessages($sender, $receiver, $content, $complaintNr, $timeZone){
         $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
         
         if(mysqli_connect_errno()){
@@ -176,7 +226,8 @@
             $queryComplaint = 
             "INSERT INTO `messages` (`sender`,`receiver` ,`complaint`, `content`, `isRead`, `dateSend`) VALUES (?,?,?,?,'0',?)";
             $stmt = mysqli_prepare($con,$queryComplaint);
-            mysqli_stmt_bind_param($stmt,"ssdss",$sender, $receiver, $complaintNr, $content, date("Y-m-d H:i:sa"));
+            date_default_timezone_set($timeZone);
+            mysqli_stmt_bind_param($stmt,"ssdss",$sender, $receiver, $complaintNr, $content, date("Y-m-d H:i:s P"));
             if(!mysqli_stmt_execute($stmt)){
                 die('Error: ' . mysqli_error($con));
                 header("Location:../ErrorPages/dbConnectionError.php");
