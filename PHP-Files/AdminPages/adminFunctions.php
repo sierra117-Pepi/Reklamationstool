@@ -210,12 +210,39 @@
                         insertMessageIntoTableMessages($customer, $employee, $content, $complaintNr, $timeZone);
                     } else if($employee == $loggedIn){
                         insertMessageIntoTableMessages($employee, $customer, $content, $complaintNr, $timeZone);
-                    } 
+                    } else if(isAdmin($loggedIn)){
+                        insertMessageIntoTableMessages($loggedIn, $customer, $content, $complaintNr, $timeZone);
+                    }
                 }
             }
         }
     }
-                         
+                
+    function isAdmin($loggedIn){
+        $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
+        if(mysqli_connect_errno()){
+            header("Location:../ErrorPages/dbConnectionError.php");
+            exit();
+        } else {
+            $queryUsers = "SELECT isAdmin FROM users WHERE name = ?;";
+            $stmt = mysqli_prepare($con,$queryUsers);
+            mysqli_stmt_bind_param($stmt, "s", $loggedIn);
+            if(!mysqli_stmt_execute($stmt)){
+                die('Error: ' . mysqli_error($con));
+                header("Location:../ErrorPages/dbConnectionError.php");
+                exit();
+            } else {
+                mysqli_stmt_bind_result($stmt, $isAdmin);
+                while(mysqli_stmt_fetch($stmt)){
+                    if($isAdmin){
+                        return true;
+                    }
+                }
+                return false;
+            }
+        }
+    }
+
     function insertMessageIntoTableMessages($sender, $receiver, $content, $complaintNr, $timeZone){
         $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
         

@@ -80,6 +80,7 @@ function addMessageToChat() {
             function: 4
         },
         success: function (response) {
+            alert(response);
             fillChatInfoForModal(localStorage.getItem("complaintNr"));
         }
     });

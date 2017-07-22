@@ -127,7 +127,7 @@
                     </div>
                     <!-- /.panel-heading -->
                     <div class="panel-body">
-                        <?php include "tableWorkerTasks.php"; ?>
+                        <?php include "tableWorkerTasks.php" ?>
                         <!-- /.table-responsive -->
                     </div>
                     <!-- /.panel-body -->

@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -113,7 +114,7 @@
                             </div>
                             <div class="col-xs-9 text-right">
 
-                                <?php include "countMessages.php"; ?>
+                                <?php include "countMessages.php" ?>
 
                                 <div>Neue Nachrichten!</div>
                             </div>
@@ -136,7 +137,7 @@
                             </div>
                             <div class="col-xs-9 text-right">
 
-                                <?php include "countTasks.php"; ?>
+                                <?php include "countTasks.php" ?>
 
                                 <div>Offene Aufträge!</div>
                             </div>

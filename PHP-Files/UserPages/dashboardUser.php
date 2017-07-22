@@ -32,13 +32,11 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script src="../../JavaScript/CustomFiles/indexUser.js" type="text/javascript"></script>
 </head>
 
 <body>
 
     <div id="wrapper">
-
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -51,9 +49,6 @@
 					Tool</a>
             </div>
             <!-- /.navbar-header -->
-
-
-
 
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
@@ -344,7 +339,6 @@
         <!-- /.col-lg-4 -->
     </div>
     <!-- /.row -->
-    </div>
     <!-- /#page-wrapper -->
     <!-- /#wrapper -->
     <!-- jQuery -->
