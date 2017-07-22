@@ -170,8 +170,8 @@ INSERT INTO `products` (`nr`, `name`, `details`) VALUES
 -- Daten für Tabelle `complaints`
 --
 INSERT INTO `complaints` (`nr`, `customer`, `employee`, `status`, `type`, `description`, `reasonSchachinger`, `measureSchachinger`, `measureAvoid`, `issued`, `take`) VALUES 
-('123', 'Andreas','' , 'Offen', 'Reklamation', 'Warenteile sind beschaedigt', 'RS', 'MS', 'MA', '2017-06-13 12:45:00', NULL), 
-('234', 'Andreas','Petko' , 'In Bearbeitung', 'Retoure', 'Warenteile fehlen!', 'RS', 'MS', 'MA', '2017-06-24 14:45', '2017-06-24 15:00:00');
+('123', 'Andreas','' , 'Offen', 'Reklamation', 'Warenteile sind beschaedigt', 'kein Auswahl', 'kein Auswahl', 'kein Auswahl', '2017-06-13 12:45:00', NULL), 
+('234', 'Andreas','Petko' , 'In Bearbeitung', 'Retoure', 'Warenteile fehlen!', 'kein Auswahl', 'kein Auswahl', 'kein Auswahl', '2017-06-24 14:45', '2017-06-24 15:00:00');
 
 --
 -- Daten für Tabelle `messages`
