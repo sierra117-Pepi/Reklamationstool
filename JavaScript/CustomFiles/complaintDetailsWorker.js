@@ -2,7 +2,7 @@ window.onload = function () {
     setDatetimepickers();
     var complaint = localStorage.getItem("complaintNr");
     $.ajax({
-        url: 'complaintDetailsExtract.php',
+        url: 'complaintDetailsExtractWorker.php',
         type: 'POST',
         data: {
             complaintNr: complaint
@@ -51,7 +51,7 @@ function updateInformationForComplaint() {
     var ms = document.getElementById("measureSchachinger").value;
     var ma = document.getElementById("measureAvoid").value;
     $.ajax({
-        url: 'functions.php',
+        url: 'workerFunctions.php',
         type: 'POST',
         data: {
             function: 5,
@@ -72,8 +72,8 @@ function updateInformationForComplaint() {
 
 function fillInfoForCompalint(information) {
     document.getElementById("complaintNr").value = information["nr"];
-    document.getElementById("name").innerHTML = information["name"] + "<br><br>" + information["details"];
-    document.getElementById("client").innerHTML = "Dieser Auftrag wurde von <strong>" + information["customer"] + " </strong>beantragt. <br><br>"
+    document.getElementById("name").innerHTML = information["name"] + "<br><br>" + information["details"] + "<br><br>";
+    document.getElementById("client").innerHTML = "Dieser Auftrag wurde von <strong>" + information["customer"] + " </strong>beantragt. <br><br><br>"
     document.getElementById("employee").innerHTML = "Dieser Auftrag wird von <strong>" + information["employee"] + " </strong>bearbeitet. <br><br><br>";
     document.getElementById("status").options.selectedIndex = getIndexStatus(information["status"]);
     document.getElementById("type").value = information["type"];

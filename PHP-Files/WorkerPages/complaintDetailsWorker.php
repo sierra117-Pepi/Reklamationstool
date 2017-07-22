@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,7 +42,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <script src="../../JavaScript/CustomFiles/complaintDetails.js" type="text/javascript"></script>
+    <script src="../../JavaScript/CustomFiles/complaintDetailsWorker.js" type="text/javascript"></script>
 </head>
 
 <body id="body">
@@ -96,8 +97,8 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <li><a href="dashboardAdmin.php"><i class="fa fa-dashboard fa-fw"></i>Aufträge Verwaltung</a></li>
-                        <li><a href="tasksAdmin.php"><i class="fa fa-tasks fa-fw"></i>Aufträge mit Mitarbeiterzuweisung</a></li>
+                        <li><a href="dashboardWorker.php"><i class="fa fa-dashboard fa-fw"></i>Aufträge Übersicht</a></li>
+                        <li><a href="tasksWorker.php"><i class="fa fa-tasks fa-fw"></i>Meine Aufträge</a></li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

@@ -4,7 +4,7 @@ function fillChatInfoForModal(complaintNr) {
     });
     localStorage.setItem("complaintNr", complaintNr);
     $.ajax({
-        url: 'adminFunctions.php',
+        url: 'workerFunctions.php',
         type: 'POST',
         data: {
             complaintNr: complaintNr,
@@ -62,7 +62,7 @@ function calculateDifference(timeSend) {
 
 function openInfoWindow(nr) {
     localStorage.setItem("complaintNr", nr);
-    window.location.href = "complaintDetailsAdmin.php";
+    window.location.href = "complaintDetailsWorker.php";
 }
 
 function addMessageToChat() {
@@ -71,7 +71,7 @@ function addMessageToChat() {
     });
     var timezone = jstz.determine();
     $.ajax({
-        url: 'adminFunctions.php',
+        url: 'workerFunctions.php',
         type: 'POST',
         data: {
             complaintNr: localStorage.getItem("complaintNr"),

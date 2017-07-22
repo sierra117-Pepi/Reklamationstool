@@ -83,7 +83,7 @@
 <script type="text/javascript">
     function removeWorkerFromComplaint(employee, nr) {
         $.ajax({
-            url: 'functions.php',
+            url: 'adminFunctions.php',
             type: 'POST',
             data: {
                 employee: employee,
@@ -98,7 +98,7 @@
 
     function addWorkerToTask(name, complaint) {
         $.ajax({
-            url: 'functions.php',
+            url: 'adminFunctions.php',
             type: 'POST',
             data: {
                 employee: name,
