@@ -8,7 +8,7 @@ function fillChatInfoForModal(complaintNr) {
         type: 'POST',
         data: {
             complaintNr: complaintNr,
-            function: 3
+            function: 2
         },
         success: function (response) {
             var ul_chat = document.getElementById("chat-div");
@@ -77,7 +77,7 @@ function addMessageToChat() {
             complaintNr: localStorage.getItem("complaintNr"),
             content: document.getElementById("message").value,
             timeZone: timezone.name,
-            function: 4
+            function: 3
         },
         success: function (response) {
             fillChatInfoForModal(localStorage.getItem("complaintNr"));

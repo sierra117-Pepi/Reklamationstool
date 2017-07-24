@@ -4,29 +4,24 @@
         switch($_POST['function']){
             case 1:
                 if(isset($_POST['employee']) && isset($_POST['complaintNr'])){
-                    if(taskHasNoWorker($_POST['complaintNr'])){
-                        addWrokerToTask($_POST['employee'], $_POST['complaintNr']);
+                    if(taskHasNoWorker(htmlspecialchars($_POST['complaintNr']))){
+                        addWrokerToTask(htmlspecialchars($_POST['employee']), htmlspecialchars($_POST['complaintNr']));
                     }
                 }
                 break;
             case 2:
-                if(isset($_POST['employee']) && isset($_POST['nr'])){
-                    removeWorkerFromComplaint($_POST['employee'], $_POST['nr']);
+                if(isset($_POST['complaintNr'])){
+                    echo(createChat(htmlspecialchars($_POST['complaintNr'])));
                 }
                 break;
-             case 3:
-                if(isset($_POST['complaintNr'])){
-                    echo(createChat($_POST['complaintNr']));
+            case 3:
+                if(isset($_POST['complaintNr']) && isset($_POST['content']) && isset($_POST['timeZone'])){
+                    echo(insertMessage(htmlspecialchars($_POST['complaintNr']),htmlspecialchars($_POST['content']), htmlspecialchars($_POST['timeZone'])));
                 }
                 break;
             case 4:
-                if(isset($_POST['complaintNr']) && isset($_POST['content']) && isset($_POST['timeZone'])){
-                    echo(insertMessage($_POST['complaintNr'],$_POST['content'], $_POST['timeZone']));
-                }
-                break;
-            case 5:
                 if(isset($_POST['complaintNr']) && isset($_POST['status']) && isset($_POST['issued']) && isset($_POST['taken']) && isset($_POST['reasonSchachinger']) && isset($_POST['measureSchachinger']) && isset($_POST['measureAvoid'])){
-                    echo(updateComplaint($_POST['complaintNr'], $_POST['status'], $_POST['issued'], $_POST['taken'], $_POST['reasonSchachinger'], $_POST['measureSchachinger'], $_POST['measureAvoid']));
+                    echo(updateComplaint(htmlspecialchars($_POST['complaintNr']), htmlspecialchars($_POST['status']), htmlspecialchars($_POST['issued']), htmlspecialchars($_POST['taken']), htmlspecialchars($_POST['reasonSchachinger']), htmlspecialchars($_POST['measureSchachinger']), htmlspecialchars($_POST['measureAvoid'])));
                 }
         }
     }
@@ -86,24 +81,6 @@
             $stmt = mysqli_prepare($con,$queryAdd);
             $taken = date("Y-m-d H:i:sa");
             mysqli_stmt_bind_param($stmt, "sss", $employee, $taken, $complaint);
-            if(!mysqli_stmt_execute($stmt)){
-                die('Error: ' . mysqli_error($con));
-                header("Location:../ErrorPages/dbConnectionError.php");
-                exit();
-            }
-        }
-    }
-
-    function removeWorkerFromComplaint($employee, $nr){
-        $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
-        
-        if(mysqli_connect_errno()){
-            header("Location:../ErrorPages/dbConnectionError.php");
-            exit();
-        } else {
-            $queryRemove = "UPDATE complaints SET employee='', status='Offen', take=NULL WHERE nr=? AND employee=?;";
-            $stmt = mysqli_prepare($con,$queryRemove);
-            mysqli_stmt_bind_param($stmt, "ds", $nr, $employee);
             if(!mysqli_stmt_execute($stmt)){
                 die('Error: ' . mysqli_error($con));
                 header("Location:../ErrorPages/dbConnectionError.php");

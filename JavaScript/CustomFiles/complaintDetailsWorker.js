@@ -54,7 +54,7 @@ function updateInformationForComplaint() {
         url: 'workerFunctions.php',
         type: 'POST',
         data: {
-            function: 5,
+            function: 4,
             complaintNr: complaint,
             status: status,
             issued: issued,

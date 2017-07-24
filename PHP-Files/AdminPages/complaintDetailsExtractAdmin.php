@@ -1,6 +1,6 @@
 <?php
     if (isset($_POST['complaintNr'])) {
-        echo(fillPageInforForComplaint($_POST['complaintNr']));
+        echo(fillPageInforForComplaint(htmlspecialchars($_POST['complaintNr'])));
     }
     
     function fillPageInforForComplaint($complaintNr){   
