@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Arbeiter-Sicht</title>
+    <title>User-Sicht</title>
 
     <!-- Datetimepicker -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
@@ -45,7 +45,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <script src="../../JavaScript/CustomFiles/complaintDetailsWorker.js" type="text/javascript"></script>
+    <script src="../../JavaScript/CustomFiles/complaintInfo.js" type="text/javascript"></script>
 </head>
 
 <body id="body">
@@ -99,8 +99,12 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <li><a href="dashboardWorker.php"><i class="fa fa-dashboard fa-fw"></i>Aufträge Übersicht</a></li>
-                        <li><a href="tasksWorker.php"><i class="fa fa-tasks fa-fw"></i>Meine Aufträge</a></li>
+                        <li><a href="dashboardUser.php"><i class="fa fa-dashboard fa-fw"></i>
+								Dashboard</a></li>
+                        <li><a href="newReturn.php"><i class="fa fa-plus fa-fw"></i>
+								Neue Reklamation</a></li>
+                        <li><a href="complaintsUser.php"><i class="fa fa-envelope fa-fw"></i>
+								Meine Reklamationen</a></li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -119,7 +123,7 @@
         <!-- /.row -->
         <form role="form">
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Produkt Information
@@ -133,7 +137,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Mitarbeiter Details
@@ -147,23 +151,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Kunde Details
-                        </div>
-                        <div class="panel-body fixed-panel">
-                            <p id="client">
-
-                            </p>
-                        </div>
-                        <div class="panel-footer">
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                     <fieldset>
                         <div class="form-group">
                             <label for="disabledSelect">Produktnummer</label>
@@ -175,59 +165,27 @@
                         </div>
                     </fieldset>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                     <fieldset>
                         <div class="form-group">
                             <label>Status</label>
-                            <select id="status" class="form-control">
-                                <option>Offen</option>
-                                <option>In Bearbeitung Offen</option>
-                                <option>Abgeschlossen - Berechtigt</option>
-                                <option>Abgeschlossen - Unberechtigt</option>
-                            </select>
+                            <input class="form-control" id="status" type="text" placeholder="" disabled>
                             <label for="disabledSelect">Auftragsdatum</label>
                             <div class='input-group date' id='issuedCalendar'>
-                                <input type='text' id="issued" class="form-control" />
+                                <input type='text' id="issued" class="form-control" disabled/>
                                 <span class="input-group-addon">
                                     <span class="fa fa-calendar"></span>
                                 </span>
                             </div>
                             <label for="disabledSelect">Mitarbeiterzuwesiung</label>
                             <div class='input-group date' id='takeCalendar'>
-                                <input type='text' id="taken" class="form-control" />
+                                <input type='text' id="taken" class="form-control" disabled/>
                                 <span class="input-group-addon">
                                     <span class="fa fa-calendar"></span>
                                 </span>
                             </div>
                         </div>
                     </fieldset>
-                </div>
-                <div class="col-lg-4">
-                    <fieldset>
-                        <div class="form-group">
-                            <label>Grund l. Schachinger</label>
-                            <select id="reasonSchachinger" class="form-control">
-				                <option>Keine Auswahl</option>
-                                <option>Reklamation unberechtigt</option>
-                                <option>Reklamation berechtigt</option>
-                            </select>
-                            <label>Gegenma&szlig;nahme Schachinger</label>
-                            <select id="measureSchachinger" class="form-control">
-                                <option>Keine Auswahl</option>
-                                <option >Keine Aktion</option>
-                                <option>Nachlieferung</option>
-                                <option>Abholung</option>
-                                <option>Anderes</option>
-                            </select>
-                            <label>Gegenma&szlig;nahme zur Vermeidung</label>
-                            <input class="form-control" id="measureAvoid" type="text" placeholder="" />
-                        </div>
-                    </fieldset>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-2">
-                    <button type="button" id="update-btn" class="btn btn-primary" onclick="updateInformationForComplaint()">Aktualisieren</button>
                 </div>
             </div>
         </form>

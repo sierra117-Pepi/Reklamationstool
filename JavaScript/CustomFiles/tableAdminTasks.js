@@ -17,6 +17,7 @@ function fillChatInfoForModal(complaintNr) {
                 ul_chat.innerHTML = "";
             }
 
+            document.getElementById("message").value = "";
             var messages = JSON.parse(response);
             for (var d in messages) {
                 var li = document.createElement("li");
@@ -80,7 +81,6 @@ function addMessageToChat() {
             function: 4
         },
         success: function (response) {
-            alert(response);
             fillChatInfoForModal(localStorage.getItem("complaintNr"));
         }
     });

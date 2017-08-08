@@ -7,7 +7,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,14 +36,11 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <!-- JSTZ -->
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jstimezonedetect/1.0.4/jstz.min.js'></script>
 
-    <script type="text/javascript" src="../../JavaScript/CustomFiles/dashBoardUser.js"></script>
+    <script type="text/javascript" src="../../JavaScript/CustomFiles/findProduct.js"></script>
 </head>
 
 <body>
-
     <div id="wrapper">
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -70,6 +66,7 @@
                     </ul>
                     <!-- /.dropdown-messages -->
                 </li>
+                <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
@@ -108,91 +105,43 @@
             </div>
             <!-- /.navbar-static-side -->
         </nav>
-
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Dashboard</h1>
+                    <h1 class="page-header">
+                        Neue Reklamation erfassen
+                    </h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-12 col-md-12">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-comments fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-
-                                    <?php include "countMessages.php" ?>
-
-                                    <div>Neuer Nachrichten!</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="messagesUser.html">
-                            <div class="panel-footer">
-                                <span class="pull-left">Details anzeigen</span> <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
+            <div class="col-md-6">
+                <form role="form">
+                    <output> Bitte geben Sie in das nachfolgende Feld Ihre erhaltene Lieferscheinnummer ein</output>
+                    <br><br>
+                    <div class="form-group input-group">
+                        <input id="productNr" type="text" class="form-control" placeholder="Lieferscheinnummer">
+                        <span class="input-group-btn">
+					<button onclick="findProduct()" class="btn btn-default" type="button"><i class="fa fa-search" ></i>
+					</button>
+				</span>
                     </div>
-                </div>
+                </form>
             </div>
-            <!-- /.panel -->
-            <div class="chat-panel panel panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-comments fa-fw"></i> Chat
-                    <div class="btn-group pull-right">
-                        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-								<i class="fa fa-chevron-down"></i>
-							</button>
-                        <ul class="dropdown-menu slidedown">
-                            <li>
-                                <a href="dashboardUser.php" id="refresh"> <i class="fa fa-refresh fa-fw"></i> Aktualisieren
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- /.panel-heading -->
-                <div class="panel-body">
-
-                    <?php include "latestChat.php" ?>
-
-                </div>
-                <!-- /.panel-body -->
-                <div class="panel-footer">
-                    <div class="input-group">
-                        <input id="message" type="text" class="form-control input-sm" placeholder="Nachricht hier eingeben..." /> <span class="input-group-btn">
-								<button class="btn btn-warning btn-sm" id="btn-chat" onclick="addMessageToChat()" type="button">
-									Senden</button>
-							</span>
-                    </div>
-                </div>
-                <!-- /.panel-footer -->
-            </div>
-            <!-- /.panel .chat-panel -->
         </div>
-        <!-- /.col-lg-4 -->
+        <!-- /#page-wrapper -->
+        <!-- /#wrapper -->
+        <!-- jQuery -->
+        <script src="../../JavaScript/IndexFiles/jquery.min.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="../../JavaScript/IndexFiles/bootstrap.min.js"></script>
+
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="../../JavaScript/IndexFiles/metisMenu.min.js"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="../../JavaScript/IndexFiles/sb-admin-2.js"></script>
     </div>
-    <!-- /.row -->
-    <!-- /#page-wrapper -->
-    <!-- /#wrapper -->
-    <!-- jQuery -->
-    <script src="../../JavaScript/IndexFiles/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../../JavaScript/IndexFiles/bootstrap.min.js"></script>
-
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="../../JavaScript/IndexFiles/metisMenu.min.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="../../JavaScript/IndexFiles/sb-admin-2.js"></script>
 </body>
 
 </html>

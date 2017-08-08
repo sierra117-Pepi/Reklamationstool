@@ -21,7 +21,7 @@
                 break;
             case 4:
                 if(isset($_POST['complaintNr']) && isset($_POST['content']) && isset($_POST['timeZone'])){
-                    echo(htmlspecialchars(insertMessage($_POST['complaintNr']),htmlspecialchars($_POST['content']), htmlspecialchars($_POST['timeZone'])));
+                    echo(insertMessage(htmlspecialchars($_POST['complaintNr']),htmlspecialchars($_POST['content']), htmlspecialchars($_POST['timeZone'])));
                 }
                 break;
             case 5:

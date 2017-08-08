@@ -4,7 +4,7 @@
         header("Location:../ErrorPages/dbConnectionError.php");
         exit();
     } else {
-        $queryMessages =
+        $queryMessages = 
         "SELECT * FROM `messages` WHERE dateSend  IN (SELECT MAX(m.dateSend) FROM messages m WHERE m.receiver=? GROUP BY complaint);";
         $stmt = mysqli_prepare($con,$queryMessages);
         mysqli_stmt_bind_param($stmt, "s", $_SESSION['userName']);
@@ -32,7 +32,7 @@
             }
             if($messages > 0){
                 echo('<li>
-                        <a class="text-center" href="tasksWorker.php"> <strong>Zu den Aufträgen</strong> 
+                        <a class="text-center" href="complaintsUser.php"> <strong>Zu den Reklamationen</strong> 
                             <i class="fa fa-angle-right"></i>
                         </a>
                     </li>');

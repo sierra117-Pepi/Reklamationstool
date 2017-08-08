@@ -4,7 +4,7 @@
         header("Location:../ErrorPages/dbConnectionError.php");
         exit();
     } else {
-        $queryMessages = "SELECT m.sender, m.receiver, m.complaint, m.content, m.isRead, m.dateSend FROM messages m JOIN users u ON m.sender = u.name WHERE m.isRead = true AND (u.isWorker = false OR u.isAdmin = false) ORDER BY m.dateSend DESC;";
+        $queryMessages = "SELECT m.sender, m.receiver, m.complaint, m.content, m.isRead, m.dateSend FROM messages m WHERE m.dateSend IN (SELECT MAX(m1.dateSend) FROM messages m1 GROUP BY m1.complaint);";
         $stmt = mysqli_prepare($con,$queryMessages);
         if(!mysqli_stmt_execute($stmt)){
             die('Error: ' . mysqli_error($con));
@@ -18,7 +18,7 @@
                             <a href="#">
                                 <div>
                                     <strong>'.$sender.'</strong> <span class="pull-right text-muted">
-										<em>Gestern</em>
+										<em> Auftrag '.$complaint.'</em>
 									</span>
                                 </div>
                                 <div>'.$content.'</div>

@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Arbeiter-Sicht</title>
+    <title>User-Sicht</title>
     <!-- Custom imports-->
     <!-- jQuery -->
     <script src="../../SB-Admin2/vendor/jquery/jquery.min.js"></script>
@@ -48,7 +48,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <script type="text/javascript" src="../../JavaScript/CustomFiles/tableWorkerTasks.js"></script>
+    <script type="text/javascript" src="../../JavaScript/CustomFiles/tableUserComplaints.js"></script>
 </head>
 
 <body id="body">
@@ -103,8 +103,12 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <li><a href="dashboardWorker.php"><i class="fa fa-dashboard fa-fw"></i>Aufträge Übersicht</a></li>
-                        <li><a href="tasksWorker.php"><i class="fa fa-tasks fa-fw"></i>Meine Aufträge</a></li>
+                        <li><a href="dashboardUser.php"><i class="fa fa-dashboard fa-fw"></i>
+								Dashboard</a></li>
+                        <li><a href="newReturn.php"><i class="fa fa-plus fa-fw"></i>
+								Neue Reklamation</a></li>
+                        <li><a href="complaintsUser.php"><i class="fa fa-envelope fa-fw"></i>
+								Meine Reklamationen</a></li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -129,7 +133,7 @@
                     </div>
                     <!-- /.panel-heading -->
                     <div class="panel-body">
-                        <?php include "tableWorkerTasks.php" ?>
+                        <?php include "tableUserComplaints.php" ?>
                         <!-- /.table-responsive -->
                     </div>
                     <!-- /.panel-body -->
