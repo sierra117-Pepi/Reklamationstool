@@ -27,6 +27,7 @@ function isUserInputCorrect($email, $pwd){
         return false;
     } else {
         $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
+        $con->set_charset("utf8");
         
         if(mysqli_connect_errno()){
             header("Location:../ErrorPages/DBConnectionError.php");

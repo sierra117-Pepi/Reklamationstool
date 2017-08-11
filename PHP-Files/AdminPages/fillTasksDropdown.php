@@ -1,5 +1,7 @@
 <?php 
     $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
+    $con->set_charset("utf8");
+
     if(mysqli_connect_errno()){
         header("Location:../ErrorPages/dbConnectionError.php");
         exit();

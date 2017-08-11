@@ -33,6 +33,7 @@
 
     function updateComplaint($complaintNr, $status, $issued, $taken, $reasonSchachinger, $measureSchachinger, $measureAvoid){
         $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
+        $con->set_charset("utf8");
         
         if(mysqli_connect_errno()){
             header("Location:../ErrorPages/dbConnectionError.php");
@@ -51,6 +52,7 @@
 
     function taskHasNoWorker($complaint){
         $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
+        $con->set_charset("utf8");
         
         if(mysqli_connect_errno()){
            header("Location:../ErrorPages/dbConnectionError.php");
@@ -77,6 +79,7 @@
     
     function addWrokerToTask($employee, $complaint){
         $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
+        $con->set_charset("utf8");
         
         if(mysqli_connect_errno()){
             header("Location:../ErrorPages/dbConnectionError.php");
@@ -96,6 +99,7 @@
 
     function removeWorkerFromComplaint($employee, $nr){
         $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
+        $con->set_charset("utf8");
         
         if(mysqli_connect_errno()){
             header("Location:../ErrorPages/dbConnectionError.php");
@@ -114,6 +118,7 @@
 
     function createChat($complaint){
         $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
+        $con->set_charset("utf8");
         
         if(mysqli_connect_errno()){
            header("Location:../ErrorPages/dbConnectionError.php");
@@ -148,6 +153,7 @@
 
     function setUnreadMessageToRead($complaint){
         $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
+        $con->set_charset("utf8");
         
         if(mysqli_connect_errno()){
             header("Location:../ErrorPages/dbConnectionError.php");
@@ -166,6 +172,7 @@
 
     function checkIfOwnerIsWorkerForComplaintMessage($sender){
         $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
+        $con->set_charset("utf8");
         
         if(mysqli_connect_errno()){
            header("Location:../ErrorPages/dbConnectionError.php");
@@ -190,6 +197,7 @@
 
     function insertMessage($complaintNr, $content, $timeZone){
         $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
+        $con->set_charset("utf8");
         
         if(mysqli_connect_errno()){
             header("Location:../ErrorPages/dbConnectionError.php");
@@ -220,6 +228,8 @@
                 
     function isAdmin($loggedIn){
         $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
+        $con->set_charset("utf8");
+        
         if(mysqli_connect_errno()){
             header("Location:../ErrorPages/dbConnectionError.php");
             exit();
@@ -245,6 +255,7 @@
 
     function insertMessageIntoTableMessages($sender, $receiver, $content, $complaintNr, $timeZone){
         $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
+        $con->set_charset("utf8");
         
         if(mysqli_connect_errno()){
             header("Location:../ErrorPages/dbConnectionError.php");

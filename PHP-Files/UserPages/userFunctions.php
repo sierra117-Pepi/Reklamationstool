@@ -33,6 +33,7 @@
     
     function insertMessageDashBoard($complaintNr, $content, $timeZone){
         $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
+        $con->set_charset("utf8");
         
         if(mysqli_connect_errno()){
             header("Location:../ErrorPages/dbConnectionError.php");
@@ -59,6 +60,7 @@
                                   
     function setMessagesToRead($complaintNr){
         $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
+        $con->set_charset("utf8");
         
         if(mysqli_connect_errno()){
             header("Location:../ErrorPages/dbConnectionError.php");
@@ -79,6 +81,7 @@
     function findProduct($productNr){
         if(!productIsInComplaints($productNr)){
             $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
+            $con->set_charset("utf8");
 
              if(mysqli_connect_errno()){
                 header("Location:../ErrorPages/dbConnectionError.php");
@@ -107,6 +110,7 @@
 
     function productIsInComplaints($productNr){
         $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
+        $con->set_charset("utf8");
 
         if(mysqli_connect_errno()){
             header("Location:../ErrorPages/dbConnectionError.php");
@@ -131,6 +135,7 @@
 
     function createCase($productNr, $type, $details){
         $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
+        $con->set_charset("utf8");
         
         if(mysqli_connect_errno()){
             header("Location:../ErrorPages/dbConnectionError.php");
@@ -152,6 +157,7 @@
     
     function createChat($complaint){
         $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
+        $con->set_charset("utf8");
         
         if(mysqli_connect_errno()){
             header("Location:../ErrorPages/dbConnectionError.php");
@@ -186,6 +192,7 @@
     
     function setUnreadMessageToRead($complaint){
         $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
+        $con->set_charset("utf8");
         
         if(mysqli_connect_errno()){
             header("Location:../ErrorPages/dbConnectionError.php");
@@ -204,6 +211,7 @@
 
     function checkIfOwnerIsWorkerForComplaintMessage($sender){
         $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
+        $con->set_charset("utf8");
         
         if(mysqli_connect_errno()){
            header("Location:../ErrorPages/dbConnectionError.php");
@@ -228,6 +236,7 @@
 
     function insertMessage($complaintNr, $content, $timeZone){
         $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
+        $con->set_charset("utf8");
         
         if(mysqli_connect_errno()){
             header("Location:../ErrorPages/dbConnectionError.php");
@@ -254,6 +263,7 @@
 
     function insertMessageIntoTableMessages($sender, $receiver, $content, $complaintNr, $timeZone){
         $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
+        $con->set_charset("utf8");
         
         if(mysqli_connect_errno()){
             header("Location:../ErrorPages/dbConnectionError.php");

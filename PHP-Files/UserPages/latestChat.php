@@ -1,5 +1,6 @@
 <?php 
     $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
+    $con->set_charset("utf8");
     
     if(mysqli_connect_errno()){
         header("Location:../ErrorPages/dbConnectionError.php");
@@ -23,6 +24,7 @@
 
     function createLatestChat($complaint){
         $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
+        $con->set_charset("utf8");
     
         if(mysqli_connect_errno()){
             header("Location:../ErrorPages/dbConnectionError.php");
@@ -74,6 +76,7 @@
 
     function chgeckIfPersonIsWorker($person){
         $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
+        $con->set_charset("utf8");
         
         if(mysqli_connect_errno()){
            header("Location:../ErrorPages/dbConnectionError.php");
