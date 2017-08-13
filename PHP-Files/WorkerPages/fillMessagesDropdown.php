@@ -1,11 +1,11 @@
 <?php 
     $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
-    $con->set_charset("utf8");
 
     if(mysqli_connect_errno()){
         header("Location:../ErrorPages/dbConnectionError.php");
         exit();
     } else {
+        $con->set_charset("utf8");
         $queryMessages =
         "SELECT * FROM `messages` WHERE dateSend  IN (SELECT MAX(m.dateSend) FROM messages m WHERE m.receiver=? GROUP BY complaint);";
         $stmt = mysqli_prepare($con,$queryMessages);

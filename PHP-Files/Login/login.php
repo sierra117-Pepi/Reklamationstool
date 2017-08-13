@@ -27,12 +27,12 @@ function isUserInputCorrect($email, $pwd){
         return false;
     } else {
         $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
-        $con->set_charset("utf8");
         
         if(mysqli_connect_errno()){
             header("Location:../ErrorPages/DBConnectionError.php");
             exit();
         } else {
+            $con->set_charset("utf8");
             $query = "SELECT id, name, email, password, isWorker, isAdmin FROM users WHERE email=? AND password=?;";
             $stmt = mysqli_prepare($con,$query);
             mysqli_stmt_bind_param($stmt,"ss",$email,$pwd);

@@ -1,11 +1,11 @@
 <?php 
     $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
-    $con->set_charset("utf8");
     
     if(mysqli_connect_errno()){
         header("Location:../ErrorPages/dbConnectionError.php");
         exit();
     } else {
+        $con->set_charset("utf8");
         $query = "SELECT complaint FROM messages WHERE dateSend IN (SELECT MAX(m.dateSend) FROM messages m WHERE m.receiver=?)";
         $stmt = mysqli_prepare($con,$query);
         mysqli_stmt_bind_param($stmt, "s", $_SESSION['userName']);
@@ -24,12 +24,12 @@
 
     function createLatestChat($complaint){
         $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
-        $con->set_charset("utf8");
     
         if(mysqli_connect_errno()){
             header("Location:../ErrorPages/dbConnectionError.php");
             exit();
         } else {
+            $con->set_charset("utf8");
             $query = "SELECT * FROM messages WHERE complaint=? ORDER BY dateSend ASC";
             $stmt = mysqli_prepare($con,$query);
             mysqli_stmt_bind_param($stmt, "d", $complaint);
@@ -76,12 +76,12 @@
 
     function chgeckIfPersonIsWorker($person){
         $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
-        $con->set_charset("utf8");
         
         if(mysqli_connect_errno()){
            header("Location:../ErrorPages/dbConnectionError.php");
             exit();
         } else {
+            $con->set_charset("utf8");
             $query = "SELECT isWorker FROM users WHERE name=?";
             $stmt = mysqli_prepare($con,$query);
             mysqli_stmt_bind_param($stmt,"s", $person);

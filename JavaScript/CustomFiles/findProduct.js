@@ -9,8 +9,30 @@ function findProduct() {
                 function: 2
             },
             success: function (response) {
-                if (response == "") {
-                    //TODO create a response for already defined case
+                if (response === "[]") {
+                    $.notify({
+                        icon: "fa fa-info-circle",
+                        message: "Es gibt kein Produkt mit der Produktnummer im System. Bitte überprüfen Sie die Nummer und versuchen Sie es nocheinmal!"
+                    }, {
+                        type: "danger",
+                        timer: 4000,
+                        placement: {
+                            from: "right",
+                            align: "right"
+                        }
+                    });
+                } else if (response === "false") {
+                    $.notify({
+                        icon: "fa fa-info-circle",
+                        message: "Für diese Produktnummer wurde bereits eine Reklamation definiert."
+                    }, {
+                        type: "warning",
+                        timer: 4000,
+                        placement: {
+                            from: "center",
+                            align: "right"
+                        }
+                    });
                 } else {
                     var productInfo = JSON.parse(response);
                     localStorage.setItem("productnr", productInfo['productNr']);
@@ -21,6 +43,16 @@ function findProduct() {
             }
         });
     } else {
-        //TODO create a error response
+        $.notify({
+            icon: "fa fa-ban",
+            message: "Es wurde keine Produktnummer für die Suche definiert!"
+        }, {
+            type: "danger",
+            timer: 4000,
+            placement: {
+                from: "right",
+                align: "right"
+            }
+        });
     }
 }

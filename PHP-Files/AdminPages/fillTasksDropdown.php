@@ -1,11 +1,11 @@
 <?php 
     $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
-    $con->set_charset("utf8");
 
     if(mysqli_connect_errno()){
         header("Location:../ErrorPages/dbConnectionError.php");
         exit();
     } else {
+        $con->set_charset("utf8");
         $queryComplaints = "SELECT nr, customer, employee, status FROM complaints ORDER BY issued DESC;";
         $stmt = mysqli_prepare($con,$queryComplaints);
         if(!mysqli_stmt_execute($stmt)){

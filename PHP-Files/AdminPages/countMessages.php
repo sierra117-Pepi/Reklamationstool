@@ -1,11 +1,11 @@
 <?php
     $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
-    $con->set_charset("utf8");
 
     if(mysqli_connect_errno()){
         header("Location:../ErrorPages/dbConnectionError.php");
         exit();
     } else {
+        $con->set_charset("utf8");
         $query = "SELECT COUNT(*)AS unreadMessages FROM messages m WHERE isRead = false AND receiver IN (SELECT name FROM users WHERE isAdmin = true OR isWorker = true)";
         $stmt = mysqli_prepare($con,$query);
         if(!mysqli_stmt_execute($stmt)){

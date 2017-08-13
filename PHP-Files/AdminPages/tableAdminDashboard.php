@@ -1,11 +1,11 @@
 <?php  
     $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
-    $con->set_charset("utf8");
 
     if(mysqli_connect_errno()){
         header("Location:../ErrorPages/dbConnectionError.php");
         exit();
     } else {
+        $con->set_charset("utf8");
         $queryComplaints = "SELECT nr, issued, type, description, employee FROM complaints ORDER BY employee ASC;";
         $stmtComplaints = mysqli_prepare($con,$queryComplaints);
         if(!mysqli_stmt_execute($stmtComplaints)){
@@ -60,12 +60,12 @@
 
     function dropdown($employee, $nr){
         $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
-        $con->set_charset("utf8");
         
         if(mysqli_connect_errno()){
             header("Location:../ErrorPages/dbConnectionError.php");
             exit();
         } else {
+            $con->set_charset("utf8");
             $queryWorkers = "SELECT name FROM users WHERE isWorker = true;";
             $stmtWorkers = mysqli_prepare($con,$queryWorkers);
             if(!mysqli_stmt_execute($stmtWorkers)){

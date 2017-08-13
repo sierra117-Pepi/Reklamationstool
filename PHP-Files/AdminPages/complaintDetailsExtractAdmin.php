@@ -5,12 +5,12 @@
     
     function fillPageInforForComplaint($complaintNr){   
         $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
-        $con->set_charset("utf8");
         
         if(mysqli_connect_errno()){
             header("Location:../ErrorPages/dbConnectionError.php");
             exit();
         } else {
+            $con->set_charset("utf8");
             $query = "SELECT c.nr, c.customer, c.employee, c.status, c.type, c.description, c.reasonSchachinger, c.measureSchachinger, c.measureAvoid, c.issued, c.take, p.name, p.details FROM complaints c JOIN products p ON c.nr = p.nr WHERE c.nr=?";
             $stmt = mysqli_prepare($con,$query);
             mysqli_stmt_bind_param($stmt,"d", $complaintNr);

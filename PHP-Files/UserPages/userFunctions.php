@@ -33,12 +33,12 @@
     
     function insertMessageDashBoard($complaintNr, $content, $timeZone){
         $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
-        $con->set_charset("utf8");
         
         if(mysqli_connect_errno()){
             header("Location:../ErrorPages/dbConnectionError.php");
             exit();
         } else {
+            $con->set_charset("utf8");
             $queryComplaint = "SELECT customer, employee FROM complaints WHERE nr=?;";
             $stmt = mysqli_prepare($con,$queryComplaint);
             mysqli_stmt_bind_param($stmt,"d",$complaintNr);
@@ -60,12 +60,12 @@
                                   
     function setMessagesToRead($complaintNr){
         $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
-        $con->set_charset("utf8");
         
         if(mysqli_connect_errno()){
             header("Location:../ErrorPages/dbConnectionError.php");
             exit();
         } else {
+            $con->set_charset("utf8");
             $queryUpdate = "UPDATE messages SET isRead=1 WHERE receiver=? AND complaint=?;";
             $stmt = mysqli_prepare($con,$queryUpdate);
             $user = $_SESSION['userName'];
@@ -81,12 +81,12 @@
     function findProduct($productNr){
         if(!productIsInComplaints($productNr)){
             $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
-            $con->set_charset("utf8");
 
              if(mysqli_connect_errno()){
                 header("Location:../ErrorPages/dbConnectionError.php");
                 exit();
             } else {
+                $con->set_charset("utf8");
                 $query = "SELECT* FROM products p WHERE nr=?;";
                 $stmt = mysqli_prepare($con,$query);
                 mysqli_stmt_bind_param($stmt,"d",$productNr);
@@ -105,17 +105,19 @@
                     return json_encode($productInfo);
                 }
             }
-        } 
+        } else {
+            return "false";
+        }
     }
 
     function productIsInComplaints($productNr){
         $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
-        $con->set_charset("utf8");
 
         if(mysqli_connect_errno()){
             header("Location:../ErrorPages/dbConnectionError.php");
             exit();
         } else {
+            $con->set_charset("utf8");
             $query = "SELECT nr FROM complaints WHERE nr=?;";
             $stmt = mysqli_prepare($con,$query);
             mysqli_stmt_bind_param($stmt,"d",$productNr);
@@ -135,12 +137,12 @@
 
     function createCase($productNr, $type, $details){
         $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
-        $con->set_charset("utf8");
         
         if(mysqli_connect_errno()){
             header("Location:../ErrorPages/dbConnectionError.php");
             exit();
         } else {
+            $con->set_charset("utf8");
             $queryComplaint = 
             "INSERT INTO `complaints` (`nr`, `customer`, `employee`, `status`, `type`, `description`, `reasonSchachinger`, `measureSchachinger`, `measureAvoid`, `issued`, `take`) VALUES (?,?,'','Offen',?,?, 'kein Auswahl', 'kein Auswahl', 'kein Auswahl',?, NULL);";
             $customer = $_SESSION['userName'];
@@ -157,12 +159,12 @@
     
     function createChat($complaint){
         $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
-        $con->set_charset("utf8");
         
         if(mysqli_connect_errno()){
             header("Location:../ErrorPages/dbConnectionError.php");
             exit();
         } else {
+            $con->set_charset("utf8");
             $queryMessages = "SELECT * FROM messages WHERE complaint=? ORDER BY dateSend ASC;";
             $stmt = mysqli_prepare($con,$queryMessages);
             mysqli_stmt_bind_param($stmt,"d",$complaint);
@@ -192,12 +194,12 @@
     
     function setUnreadMessageToRead($complaint){
         $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
-        $con->set_charset("utf8");
         
         if(mysqli_connect_errno()){
             header("Location:../ErrorPages/dbConnectionError.php");
             exit();
         } else {
+            $con->set_charset("utf8");
             $queryUpdate = "UPDATE messages SET isRead='1' WHERE receiver=? && complaint=?;";
             $stmt = mysqli_prepare($con,$queryUpdate);
             mysqli_stmt_bind_param($stmt, "sd", $_SESSION['userName'], $complaint);
@@ -211,12 +213,12 @@
 
     function checkIfOwnerIsWorkerForComplaintMessage($sender){
         $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
-        $con->set_charset("utf8");
         
         if(mysqli_connect_errno()){
            header("Location:../ErrorPages/dbConnectionError.php");
             exit();
         } else {
+            $con->set_charset("utf8");
             $query = "SELECT isWorker FROM users WHERE name=?";
             $stmt = mysqli_prepare($con,$query);
             mysqli_stmt_bind_param($stmt,"s", $sender);
@@ -236,12 +238,12 @@
 
     function insertMessage($complaintNr, $content, $timeZone){
         $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
-        $con->set_charset("utf8");
         
         if(mysqli_connect_errno()){
             header("Location:../ErrorPages/dbConnectionError.php");
             exit();
         } else {
+            $con->set_charset("utf8");
             $queryComplaint = "SELECT customer, employee FROM complaints WHERE nr=?;";
             $stmt = mysqli_prepare($con,$queryComplaint);
             mysqli_stmt_bind_param($stmt,"d",$complaintNr);
@@ -263,12 +265,12 @@
 
     function insertMessageIntoTableMessages($sender, $receiver, $content, $complaintNr, $timeZone){
         $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
-        $con->set_charset("utf8");
         
         if(mysqli_connect_errno()){
             header("Location:../ErrorPages/dbConnectionError.php");
             exit();
         } else {
+            $con->set_charset("utf8");
             $queryComplaint = 
             "INSERT INTO `messages` (`sender`,`receiver` ,`complaint`, `content`, `isRead`, `dateSend`) VALUES (?,?,?,?,'0',?)";
             $stmt = mysqli_prepare($con,$queryComplaint);
