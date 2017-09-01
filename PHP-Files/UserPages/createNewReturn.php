@@ -14,12 +14,6 @@
 
     <title>User-Sicht</title>
 
-    <!-- Datetimepicker -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-    <script type="text/javascript" src="../../JavaScript/bower_components/moment/min/moment.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../../JavaScript/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
-
     <!-- Bootstrap Core CSS -->
     <link href="../../CSS/bootstrap.min.css" rel="stylesheet">
 
@@ -38,6 +32,15 @@
     <!-- Custom Fonts -->
     <link href="../../CSS/Login/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    <!-- Custom CSS -->
+    <link href="../../CSS/navbar.css" rel="stylesheet" type="text/css">
+
+    <!-- Datetimepicker -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/bower_components/moment/min/moment.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -45,6 +48,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!-- Custom JS -->
     <script src="../../JavaScript/CustomFiles/productInfo.js" type="text/javascript"></script>
 </head>
 
@@ -58,13 +62,12 @@
 						class="icon-bar"
 					></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
 				</button>
-                <a class="navbar-brand" href="indexAdmin.html">Reklamationsmanagement</a>
+                <p class="navbar-brand">Reklamationsmanagement</p>
             </div>
             <!-- /.navbar-header -->
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
+                    <button class="dropdown-toggle btn-circle" data-toggle="dropdown"> <i class="fa fa-envelope fa-fw"></i> </button>
                     <ul class="dropdown-menu dropdown-messages">
 
                         <?php include "fillMessagesDropdown.php" ?>
@@ -74,8 +77,7 @@
                 </li>
                 <!-- /.dropdown -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
+                    <button class="dropdown-toggle btn-circle" data-toggle="dropdown"> <i class="fa fa-tasks fa-fw"></i> </button>
                     <ul class="dropdown-menu dropdown-tasks">
 
                         <?php include "fillTasksDropdown.php" ?>
@@ -85,9 +87,7 @@
                 </li>
                 <!-- /.dropdown -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-
+                    <button class="dropdown-toggle btn-circle" data-toggle="dropdown"> <i class="fa fa-user fa-fw"></i> </button>
                     <?php include "../LogOut/logoutDropdown.php" ?>
 
                     <!-- /.dropdown-user -->

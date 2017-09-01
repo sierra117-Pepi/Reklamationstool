@@ -13,11 +13,6 @@
     <meta name="author" content="">
 
     <title>User-Sicht</title>
-    <!-- Custom imports-->
-    <!-- jQuery -->
-    <script src="../../SB-Admin2/vendor/jquery/jquery.min.js"></script>
-    <!-- JSPDF -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
 
     <!-- Bootstrap Core CSS -->
     <link href="../../SB-Admin2/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -28,16 +23,30 @@
     <!-- Social Buttons CSS -->
     <link href="../../SB-Admin2/vendor/bootstrap-social/bootstrap-social.css" rel="stylesheet">
 
+    <!-- DataTables CSS -->
+    <link href="../../SB-Admin2/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="../../SB-Admin2/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+
     <!-- Custom CSS -->
     <link href="../../SB-Admin2/dist/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="../../SB-Admin2/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    <!-- Custom CSS -->
+    <link href="../../CSS/navbar.css" rel="stylesheet">
+
     <!-- jQuery -->
     <script src="../../SB-Admin2/vendor/jquery/jquery.min.js"></script>
+
+    <!-- JSPDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+
     <!-- Bootstrap Core JavaScript -->
     <script src="../../SB-Admin2/vendor/bootstrap/js/bootstrap.min.js"></script>
+
     <!-- JSTZ -->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jstimezonedetect/1.0.4/jstz.min.js'></script>
 
@@ -48,6 +57,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!-- Custom JS -->
     <script type="text/javascript" src="../../JavaScript/CustomFiles/tableUserComplaints.js"></script>
 </head>
 
@@ -62,14 +72,12 @@
 						class="icon-bar"
 					></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
 				</button>
-                <a class="navbar-brand" href="indexWorker.html">Reklamationsmanagement
-					Tool</a>
+                <p class="navbar-brand">Reklamationsmanagement</p>
             </div>
             <!-- /.navbar-header -->
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
+                    <button class="dropdown-toggle btn-circle" data-toggle="dropdown"> <i class="fa fa-envelope fa-fw"></i> </button>
                     <ul class="dropdown-menu dropdown-messages">
 
                         <?php include "fillMessagesDropdown.php" ?>
@@ -79,8 +87,7 @@
                 </li>
                 <!-- /.dropdown -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
+                    <button class="dropdown-toggle btn-circle" data-toggle="dropdown"> <i class="fa fa-tasks fa-fw"></i> </button>
                     <ul class="dropdown-menu dropdown-tasks">
 
                         <?php include "fillTasksDropdown.php" ?>
@@ -90,9 +97,7 @@
                 </li>
                 <!-- /.dropdown -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-
+                    <button class="dropdown-toggle btn-circle" data-toggle="dropdown"> <i class="fa fa-user fa-fw"></i> </button>
                     <?php include "../LogOut/logoutDropdown.php" ?>
 
                     <!-- /.dropdown-user -->
@@ -103,12 +108,24 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <li><a href="dashboardUser.php"><i class="fa fa-dashboard fa-fw"></i>
-								Dashboard</a></li>
-                        <li><a href="newReturn.php"><i class="fa fa-plus fa-fw"></i>
-								Neue Reklamation</a></li>
-                        <li><a href="complaintsUser.php"><i class="fa fa-envelope fa-fw"></i>
-								Meine Reklamationen</a></li>
+                        <li class="sidebar-li">
+                            <a href="dashboardUser.php">
+                                <button class="btn-circle"><i class="fa fa-dashboard fa-fw"></i></button>
+                                <p class="description">Dashboard</p>
+                            </a>
+                        </li>
+                        <li class="sidebar-li">
+                            <a href="newReturn.php">
+                                <button class="btn-circle"><i class="fa fa-plus fa-fw"></i></button>
+                                <p class="description">Neue Reklamation</p>
+                            </a>
+                        </li>
+                        <li class="sidebar-li">
+                            <a href="complaintsUser.php">
+                                <button class="btn-circle"><i class="fa fa-envelope fa-fw"></i></button>
+                                <p class="description">Meine Reklamationen</p>
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

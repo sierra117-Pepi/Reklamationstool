@@ -30,6 +30,9 @@
     <!-- Custom Fonts -->
     <link href="../../CSS/Login/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    <!-- Custom CSS -->
+    <link href="../../CSS/navbar.css" rel="stylesheet">
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -48,13 +51,12 @@
 						class="icon-bar"
 					></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
 				</button>
-                <a class="navbar-brand" href="indexAdmin.html">Reklamationsmanagement</a>
+                <p class="navbar-brand">Reklamationsmanagement</p>
             </div>
             <!-- /.navbar-header -->
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
+                    <button class="dropdown-toggle btn-circle" data-toggle="dropdown"> <i class="fa fa-envelope fa-fw"></i> </button>
                     <ul class="dropdown-menu dropdown-messages">
 
                         <?php include "fillMessagesDropdown.php" ?>
@@ -64,8 +66,7 @@
                 </li>
                 <!-- /.dropdown -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
+                    <button class="dropdown-toggle btn-circle" data-toggle="dropdown"> <i class="fa fa-tasks fa-fw"></i> </button>
                     <ul class="dropdown-menu dropdown-tasks">
 
                         <?php include "fillTasksDropdown.php" ?>
@@ -75,9 +76,7 @@
                 </li>
                 <!-- /.dropdown -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-
+                    <button class="dropdown-toggle btn-circle" data-toggle="dropdown"> <i class="fa fa-user fa-fw"></i> </button>
                     <?php include "../LogOut/logoutDropdown.php" ?>
 
                     <!-- /.dropdown-user -->
@@ -89,8 +88,18 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <li><a href="dashboardAdmin.php"><i class="fa fa-dashboard fa-fw"></i>Aufträge Verwaltung</a></li>
-                        <li><a href="tasksAdmin.php"><i class="fa fa-tasks fa-fw"></i>Aufträge mit Mitarbeiterzuweisung</a></li>
+                        <li class="sidebar-li">
+                            <a href="dashboardAdmin.php">
+                                <button class="btn-circle"><i class="fa fa-dashboard fa-fw"></i></button>
+                                <p class="description">Aufträge Verwaltung</p>
+                            </a>
+                        </li>
+                        <li class="sidebar-li">
+                            <a href="tasksAdmin.php">
+                                <button class="btn-circle"><i class="fa fa-tasks fa-fw"></i></button>
+                                <p class="description">Aufträge mit Mitarbeiterzuweisung</p>
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
