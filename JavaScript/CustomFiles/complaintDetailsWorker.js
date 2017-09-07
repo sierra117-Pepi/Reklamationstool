@@ -50,24 +50,41 @@ function updateInformationForComplaint() {
     var rs = document.getElementById("reasonSchachinger").value;
     var ms = document.getElementById("measureSchachinger").value;
     var ma = document.getElementById("measureAvoid").value;
-    $.ajax({
-        url: 'workerFunctions.php',
-        type: 'POST',
-        data: {
-            function: 4,
-            complaintNr: complaint,
-            status: status,
-            issued: issued,
-            taken: taken,
-            reasonSchachinger: rs,
-            measureSchachinger: ms,
-            measureAvoid: ma
 
-        },
-        success: function (response) {
-            window.location.reload();
-        }
-    });
+    var from = new Date(issued);
+    var to = new Date(taken);
+    if (from < to) {
+        $.ajax({
+            url: 'workerFunctions.php',
+            type: 'POST',
+            data: {
+                function: 4,
+                complaintNr: complaint,
+                status: status,
+                issued: issued,
+                taken: taken,
+                reasonSchachinger: rs,
+                measureSchachinger: ms,
+                measureAvoid: ma
+
+            },
+            success: function (response) {
+                window.location.reload();
+            }
+        });
+    } else {
+        $.notify({
+            icon: "fa fa-ban",
+            message: "Bitte überprüfen Sie den definierten Zeitraum. Es scheint als, ob das Auftragsdatum nach dem Zuweisungsdatum ist!"
+        }, {
+            type: "danger",
+            timer: 4000,
+            placement: {
+                from: "right",
+                align: "right"
+            }
+        });
+    }
 }
 
 function fillInfoForCompalint(information) {

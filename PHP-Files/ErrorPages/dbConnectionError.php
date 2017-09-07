@@ -23,6 +23,9 @@
 
     <!-- Custom Fonts -->
     <link href="../../CSS/Login/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Custom CSS -->
+    <link href="../../CSS/navbar.css" rel="stylesheet">
 </head>
 
 <body>
@@ -40,7 +43,11 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <li><a href="../Login/login_html.php"><i class="fa fa-pencil fa-fw"></i>Zur&uuml;ck zum Login</a></li>
+                        <li>
+                            <a href="../Login/login_html.php">
+                                <button class="btn-circle"><i class="fa fa-pencil fa-fw"></i></button>
+                                <p class="description">Zur&uuml;ck zum Login</p>
+                            </a>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
