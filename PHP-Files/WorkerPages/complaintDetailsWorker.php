@@ -48,6 +48,9 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!-- notify js -->
+    <script src="../../JavaScript/notify/bootstrap-notify.js" type="text/javascript"></script>
+
     <!-- Custom JS -->
     <script src="../../JavaScript/CustomFiles/complaintDetailsWorker.js" type="text/javascript"></script>
 </head>
