@@ -1,34 +1,39 @@
 <?php
     session_start();
-    if(isset($_POST['function'])){
-        switch($_POST['function']){
-            case 1: 
-                if(isset($_POST['complaintNr']) && isset($_POST['content']) && isset($_POST['timeZone'])){
-                    setMessagesToRead(htmlspecialchars($_POST['complaintNr']));
-                    echo(insertMessageDashBoard(htmlspecialchars($_POST['complaintNr']),htmlspecialchars($_POST['content']), htmlspecialchars($_POST['timeZone'])));
-                }
-                break;
-            case 2:
-                if(isset($_POST['productNr'])){
-                    echo(findProduct(htmlspecialchars($_POST['productNr'])));
-                }
-                break;
-            case 3:
-                if(isset($_POST['productNr']) && isset($_POST['type']) && isset($_POST['details']) && isset($_POST['date'])){
-                    echo(createCase(htmlspecialchars($_POST['productNr']),htmlspecialchars($_POST['type']), htmlspecialchars($_POST['details'])));
-                }
-                break;
-            case 4:
-                if(isset($_POST['complaintNr'])){
-                    echo(createChat(htmlspecialchars($_POST['complaintNr'])));
-                }
-                break;
-            case 5:
-                if(isset($_POST['complaintNr']) && isset($_POST['content']) && isset($_POST['timeZone'])){
-                    echo(insertMessage(htmlspecialchars($_POST['complaintNr']),htmlspecialchars($_POST['content']), htmlspecialchars($_POST['timeZone'])));
-                }
-                break;
+    if(isset($_SESSION['userName'])){
+        if(isset($_POST['function'])){
+            switch($_POST['function']){
+                case 1: 
+                    if(isset($_POST['complaintNr']) && isset($_POST['content']) && isset($_POST['timeZone'])){
+                        setMessagesToRead(htmlspecialchars($_POST['complaintNr']));
+                        echo(insertMessageDashBoard(htmlspecialchars($_POST['complaintNr']),htmlspecialchars($_POST['content']), htmlspecialchars($_POST['timeZone'])));
+                    }
+                    break;
+                case 2:
+                    if(isset($_POST['productNr'])){
+                        echo(findProduct(htmlspecialchars($_POST['productNr'])));
+                    }
+                    break;
+                case 3:
+                    if(isset($_POST['productNr']) && isset($_POST['type']) && isset($_POST['details']) && isset($_POST['date'])){
+                        echo(createCase(htmlspecialchars($_POST['productNr']),htmlspecialchars($_POST['type']), htmlspecialchars($_POST['details'])));
+                    }
+                    break;
+                case 4:
+                    if(isset($_POST['complaintNr'])){
+                        echo(createChat(htmlspecialchars($_POST['complaintNr'])));
+                    }
+                    break;
+                case 5:
+                    if(isset($_POST['complaintNr']) && isset($_POST['content']) && isset($_POST['timeZone'])){
+                        echo(insertMessage(htmlspecialchars($_POST['complaintNr']),htmlspecialchars($_POST['content']), htmlspecialchars($_POST['timeZone'])));
+                    }
+                    break;
+            }
         }
+    } else {
+        header("Location:../Login/login_html.php");
+        exit();
     }
     
     function insertMessageDashBoard($complaintNr, $content, $timeZone){

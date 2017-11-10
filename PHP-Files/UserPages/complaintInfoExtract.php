@@ -1,6 +1,12 @@
 <?php
-    if (isset($_POST['complaintNr'])) {
-        echo(fillPageInforForComplaint(htmlspecialchars($_POST['complaintNr'])));
+    
+    if(isset($_SESSION('userName'))){
+        if (isset($_POST['complaintNr'])) {
+            echo(fillPageInforForComplaint(htmlspecialchars($_POST['complaintNr'])));
+        }
+    } else {
+        header("Location:../Login/login_html.php");
+        exit();
     }
     
     function fillPageInforForComplaint($complaintNr){   

@@ -205,7 +205,7 @@
                                     <span class="fa fa-calendar"></span>
                                 </span>
                             </div>
-                            <label for="disabledSelect">Mitarbeiterzuwesiung</label>
+                            <label for="disabledSelect">Annahmedatum</label>
                             <div class='input-group date' id='takeCalendar'>
                                 <input type='text' id="taken" class="form-control" />
                                 <span class="input-group-addon">

@@ -1,25 +1,31 @@
 <?php 
-    $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
-    
-    if(mysqli_connect_errno()){
-        header("Location:../ErrorPages/dbConnectionError.php");
-        exit();
-    } else {
-        $con->set_charset("utf8");
-        $query = "SELECT complaint FROM messages WHERE dateSend IN (SELECT MAX(m.dateSend) FROM messages m WHERE m.receiver=?)";
-        $stmt = mysqli_prepare($con,$query);
-        mysqli_stmt_bind_param($stmt, "s", $_SESSION['userName']);
-        if(!mysqli_stmt_execute($stmt)){
-            die('Error: ' . mysqli_error($con));
+
+    if(isset($_SESSION['userName'])){
+        $con = mysqli_connect("localhost", "Petko", "petko", "legrandDB");
+
+        if(mysqli_connect_errno()){
             header("Location:../ErrorPages/dbConnectionError.php");
             exit();
         } else {
-            $messages = 0;
-            mysqli_stmt_bind_result($stmt, $complaint);
-            while(mysqli_stmt_fetch($stmt)){
-                createLatestChat($complaint);
+            $con->set_charset("utf8");
+            $query = "SELECT complaint FROM messages WHERE dateSend IN (SELECT MAX(m.dateSend) FROM messages m WHERE m.receiver=?)";
+            $stmt = mysqli_prepare($con,$query);
+            mysqli_stmt_bind_param($stmt, "s", $_SESSION['userName']);
+            if(!mysqli_stmt_execute($stmt)){
+                die('Error: ' . mysqli_error($con));
+                header("Location:../ErrorPages/dbConnectionError.php");
+                exit();
+            } else {
+                $messages = 0;
+                mysqli_stmt_bind_result($stmt, $complaint);
+                while(mysqli_stmt_fetch($stmt)){
+                    createLatestChat($complaint);
+                }
             }
         }
+    } else {
+        header("Location:../Login/login_html.php");
+        exit();
     }
 
     function createLatestChat($complaint){

@@ -1,6 +1,6 @@
 <?php
-    session_unset();
-    session_destroy();
+    session_unset($_SESSION['userName']);
+    session_destroy($_SESSION['userName']);
     header("Location:../Login/login_html.php");
     exit();
 ?>

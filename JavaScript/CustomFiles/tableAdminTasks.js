@@ -19,6 +19,7 @@ function fillChatInfoForModal(complaintNr) {
 
             document.getElementById("message").value = "";
             var messages = JSON.parse(response);
+            document.getElementById("myModalLabel").innerHTML = "Kommunikationsverlauf für Reklamation " + complaintNr;
             for (var d in messages) {
                 var li = document.createElement("li");
                 var timeDiff = calculateDifference(messages[d][4]);
